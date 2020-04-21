@@ -28,11 +28,11 @@ exports.up = function(knex) {
         .boolean('available');
 
     tbl
-        .string('rental_cost')
+        .float('rental_cost')
         .notNullable()
     
     //requests table
-    kex.schema.createTable('requests', (tbl) => {
+    knex.schema.createTable('requests', (tbl) => {
         tbl
             .increments()
 
@@ -65,5 +65,8 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.drobTableIfExsists("tools")
+  return knex.schema
+  .dropTableIfExists("tools")
+  .dropTableIfExists("requests")
+
 };
