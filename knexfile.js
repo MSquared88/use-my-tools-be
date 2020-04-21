@@ -9,7 +9,7 @@ module.exports = {
       port: 5432,
       user: 'postgres',
       password: 'lambda123',
-      database: 'tools'
+      database: 'use-my-tools'
     },
     migrations: {
       directory: './dataBase/migrations',
