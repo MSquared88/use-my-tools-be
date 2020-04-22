@@ -5,6 +5,6 @@ module.exports = {
 
 }
 
-const getTools = () => {
+function getTools(){
     return db('tools').where('available', 1)
-}
+} 
