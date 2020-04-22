@@ -30,13 +30,13 @@ router.post('/user/register', validateUser, (req, res) => {
 })
 
 router.post('/user/login', (req, res) => {
-	const { username, password } = req.body
+	const { user_name, password } = req.body
 
-	usersModel.getBy( {username} )
+	usersModel.getBy( {user_name} )
 		.then(user => {
 			if (user && bcrypt.compareSync(password, user.password)){
 				const  token  = createToken(user)
-				res.status(200).json({message: `Welcome ${user.username} to Kickstarter Success`, token})
+				res.status(200).json({message: `Welcome ${user.username} to  Use my Tools`, token})
 			} else {
 				res.status(401).json({message: "invalid credentials"})
 			}

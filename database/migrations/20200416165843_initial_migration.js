@@ -33,11 +33,11 @@ exports.up = function (knex) {
         .notNullable();
 
     tbl
-        .string("zip", 128)
+        .integer("zip")
         .notNullable();
   });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExistsy("users");
+  return knex.schema.dropTableIfExists("users");
 };
