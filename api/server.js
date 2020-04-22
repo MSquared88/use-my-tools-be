@@ -1,11 +1,16 @@
 //imports
 const express = require('express');
+
+//middleware
 const helmet = require('helmet')
 const cors = require('cors')
 const restricted = require('./utils/restricted-middleware')
+const logger = require('./Utils/logger')
 
 //routes
-const usersRoute = require('./routes/users/users-route')
+const usersRouter = require('./routes/users/users-route')
+const toolsRouter = require('./routes/tools/tools-route')
+
 
 //initiate server
 const server = express()
@@ -14,7 +19,13 @@ const server = express()
 server.use(express.json())
 server.use(helmet())
 server.use(cors())
+server.use(logger)
 
-server.use(usersRoute)
+server.use('/api',usersRouter)
+
+//restricted routes
+// server.use(restricted)
+
+server.use('/api', toolsRouter)
 
 module.exports = server
