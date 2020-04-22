@@ -1,4 +1,5 @@
 // Update with your config settings.
+require("dotenv").config("./env");
 
 module.exports = {
 
@@ -7,8 +8,8 @@ module.exports = {
     connection: {
       host: 'localhost',
       port: 5432,
-      user: 'postgres',
-      password: 'lambda123',
+      user: process.env.USER,
+      password: process.env.PASSWORD,
       database: 'use-my-tools'
     },
     migrations: {
