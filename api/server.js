@@ -4,7 +4,7 @@ const express = require('express');
 //middleware
 const helmet = require('helmet')
 const cors = require('cors')
-const restricted = require('./utils/restricted-middleware')
+const restricted = require('./Utils/auth/restricted-middleware')
 const logger = require('./Utils/logger')
 
 //routes
@@ -24,7 +24,7 @@ server.use(logger)
 server.use('/api',usersRouter)
 
 //restricted routes
-// server.use(restricted)
+server.use(restricted)
 
 server.use('/api', toolsRouter)
 
