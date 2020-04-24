@@ -3,11 +3,11 @@ const express = require('express')
 //auth
 const bcrypt = require('bcryptjs')
 
-const createToken = require('../../Utils/createToken')
+const createToken = require('../../Utils/auth/createToken')
 
 //middleware
-const restricted = require('../../utils/restricted-middleware')
-const validateUser = require('../../utils/validateUser-middleware')
+const restricted = require('../../Utils/auth/restricted-middleware')
+const validateUser = require('../../Utils/auth/validateUser-middleware')
 
 //dataBase
 const usersModel = require('./users-model')
