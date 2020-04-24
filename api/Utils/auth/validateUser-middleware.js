@@ -1,7 +1,7 @@
 module.exports = (req, res, next) => {
-    const {username, password, email} = req.body
+    const {user_name, password, email, street, } = req.body
 
-    if(!username || !password) {
+    if(!user_name || !password || !email || !street) {
         res.status(400).json({message: 'username, password, and email are required fields'})
     }
     else {
