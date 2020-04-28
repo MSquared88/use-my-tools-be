@@ -2,17 +2,19 @@ const express = require('express')
 const toolsModel = require('./tools-model')
 
 //middleware
-const validateTool = require('../../Utils/validate-tool')
+const validateTool = require('../../Utils/validateNewTool')
+
+// async function validateToolid(req, res, next) {
+//     id = req.params.id
+//     try{
+//         toolsModel.getToolsById(id)
+
+//     }
+// }
 
 const router = express.Router()
 
 router.get('/tools', async (req, res,) => {
-    //assign tool to userid in token
-    //and make tool available true
-    req.body.available = 1
-    req.body.owner_id = req.userid
-
-    const tool = req.body
     try{
         const tools = await toolsModel.getTools()
         res.status(200).json(tools)
@@ -22,6 +24,19 @@ router.get('/tools', async (req, res,) => {
         res.status(500).json({ message: 'could not get tools', err })
     }
 })
+
+router.get('/tools/:id', async (req, res,) => {
+    id = req.params.id
+    try{
+        const tool = await toolsModel.getToolsById(id)
+        res.status(200).json(tool)
+    }
+    catch(err){
+        res.status(500).json({ message: 'could not get tool', err })
+    }
+})
+
+
 
 router.post('/tools', validateTool,  async (req, res) => {
     const id = req.userid
@@ -38,6 +53,18 @@ router.post('/tools', validateTool,  async (req, res) => {
         res.status(500).json({ message: 'could not add tool', err })
     }
     
+})
+
+router.delete('/tools/:id', async (req, res) => {
+    const id = req.params.id
+    
+    try{
+        const tool = await toolsModel.deleteTool(id)
+        res.status(200).json(tool)
+    }
+    catch(err){
+        res.status(500).json({ message: 'could not delete tool', err })
+    }
 })
 
 router.get('/user-tools', async (req, res) => {

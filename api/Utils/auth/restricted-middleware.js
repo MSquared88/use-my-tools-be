@@ -17,6 +17,6 @@ module.exports = (req, res, next) => {
       })
   }
   else{
-      res.status(400).json({message: 'a authorization token is required in the header'})
+      res.status(401).json({message: 'a authorization token is required in the header'})
   }
 };
