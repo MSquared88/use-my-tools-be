@@ -5,7 +5,8 @@ module.exports = {
     getToolsById,
     getUserTools,
     addTool,
-    deleteTool
+    deleteTool,
+    updateTool
 }
 
 function getTools(){
@@ -26,7 +27,18 @@ function getUserTools(user){
 async function addTool(tool){
     const [id] = await db('tools').insert(tool, 'id')
 
+
     return db('tools').where({ id }).first()
+}
+
+async function updateTool(id, updatedTool){
+    const toolId = await db('tools')
+    .where({id})
+    .update(updatedTool, ['id'])
+    console.log('toolId', toolId)
+    
+    return db('tools').where(toolId[0])
+
 }
 
 async function deleteTool(id){

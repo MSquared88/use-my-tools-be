@@ -55,6 +55,19 @@ router.post('/tools', validateTool,  async (req, res) => {
     
 })
 
+router.put('/tools/:id', async (req, res) => {
+    const tool = req.body
+    const id = req.params.id
+
+    try{
+        const dbRes = await toolsModel.updateTool(id, tool)
+        res.status(200).json(dbRes)
+    }
+    catch(err){
+        res.status(500).json({ message: 'could not update tool', err })
+    }
+})
+
 router.delete('/tools/:id', async (req, res) => {
     const id = req.params.id
     
