@@ -14,14 +14,15 @@ function getTools(){
     .where('available', true)
     .join('users', 'users.id', '=', 'tools.owner_id')
     .select('tools.id', 'users.user_name',  'tools.tool_name','tools.tool_type', 'tools.tool_description','tools.available','tools.rental_cost')
+    .orderBy('id')
 } 
 
 function getToolsById(id){
-    return db('tools').where({id})
+    return db('tools').where({id}).orderBy('id')
 } 
 
 function getUserTools(user){
-    return db('tools').where('owner_id', user)
+    return db('tools').where('owner_id', user).orderBy('id')
 }
 
 async function addTool(tool){
@@ -37,7 +38,7 @@ async function updateTool(id, updatedTool){
     .update(updatedTool, ['id'])
     console.log('toolId', toolId)
     
-    return db('tools').where(toolId[0])
+    return db('tools').where(toolId[0]).first()
 
 }
 
