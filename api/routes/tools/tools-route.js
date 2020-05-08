@@ -4,14 +4,6 @@ const toolsModel = require('./tools-model')
 //middleware
 const validateTool = require('../../Utils/validateNewTool')
 
-// async function validateToolid(req, res, next) {
-//     id = req.params.id
-//     try{
-//         toolsModel.getToolsById(id)
-
-//     }
-// }
-
 const router = express.Router()
 
 router.get('/tools', async (req, res,) => {
@@ -78,6 +70,11 @@ router.delete('/tools/:id', async (req, res) => {
     catch(err){
         res.status(500).json({ message: 'could not delete tool', err })
     }
+})
+
+router.post('/tools/requests', async (req, res) => {
+    let request = req.body
+    const user_id = req.userid
 })
 
 router.get('/user-tools', async (req, res) => {
