@@ -6,7 +6,8 @@ module.exports = {
     getUserTools,
     addTool,
     deleteTool,
-    updateTool
+    updateTool, 
+    addRequest,
 }
 
 function getTools(){
@@ -47,4 +48,11 @@ async function deleteTool(id){
 
     await db('tools').where({id}).delete()
     return tool
+}
+
+async function addRequest(request){
+    const [id] = await db('requests').insert(request, 'id')
+
+
+    return db('requests').where({ id }).first()
 }

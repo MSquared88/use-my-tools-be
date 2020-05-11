@@ -30,9 +30,10 @@ exports.up = function(knex) {
     tbl
         .float('rental_cost')
         .notNullable()
+    })
     
     //requests table
-    knex.schema.createTable('requests', (tbl) => {
+    .createTable('requests', (tbl) => {
         tbl
             .increments()
 
@@ -57,10 +58,6 @@ exports.up = function(knex) {
         tbl
             .string("request_length")
             .notNullable()
-
-
-
-    })
   })
 };
 
