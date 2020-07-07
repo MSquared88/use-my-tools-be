@@ -1,5 +1,8 @@
 const db  = require('../../../database/dbConfig')
 
+
+
+
 module.exports = {
     getTools,
     getToolsById,
@@ -14,7 +17,7 @@ function getTools(){
     return db('tools')
     .where('available', true)
     .join('users', 'users.id', '=', 'tools.owner_id')
-    .select('tools.id', 'users.user_name',  'tools.tool_name','tools.tool_type', 'tools.tool_description','tools.available','tools.rental_cost')
+    .select('tools.id', 'users.user_name',  'tools.tool_name','tools.tool_type', 'tools.tool_description','tools.available','tools.rental_cost', 'tools.img_url')
     .orderBy('id')
 } 
 
@@ -27,8 +30,8 @@ function getUserTools(user){
 }
 
 async function addTool(tool){
-    const [id] = await db('tools').insert(tool, 'id')
 
+    const [id] = await db('tools').insert(tool, 'id')
 
     return db('tools').where({ id }).first()
 }
