@@ -12,6 +12,8 @@ exports.up = function(knex) {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+    tbl
+        .string('img_url')
 
     tbl
         .string('tool_name')
@@ -63,7 +65,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return knex.schema
-  .dropTableIfExists("tools")
   .dropTableIfExists("requests")
+  .dropTableIfExists("tools")
 
 };
