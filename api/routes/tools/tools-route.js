@@ -4,10 +4,18 @@ const toolsModel = require('./tools-model');
 //middleware
 const validateTool = require('../../Utils/validateNewTool');
 
+//additional routes
 const imgRoute = require('./img-route')
+const requestsRoute = require('./requests-route')
+
 const router = express.Router()
 
+//image routes
 router.use(imgRoute)
+
+// request routes
+router.use(requestsRoute)
+
 
 router.get('/tools', async (req, res,) => {
     try{
@@ -75,10 +83,6 @@ router.delete('/tools/:id', async (req, res) => {
     }
 });
 
-router.post('/tools/requests', async (req, res) => {
-    let request = req.body
-    const user_id = req.userid
-});
 
 router.get('/user-tools', async (req, res) => {
     

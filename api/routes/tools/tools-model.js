@@ -11,6 +11,7 @@ module.exports = {
     deleteTool,
     updateTool, 
     addRequest,
+    toolRequests
 }
 
 function getTools(){
@@ -56,6 +57,17 @@ async function deleteTool(id){
 async function addRequest(request){
     const [id] = await db('requests').insert(request, 'id')
 
-
     return db('requests').where({ id }).first()
+}
+
+function toolRequests(user){
+    return db('tools AS t')
+    .join('requests AS r', 'r.tool_id', '=', 't.id')
+    .join('users AS u', 'u.id', '=', 'r.requestor_id')
+    .select(
+        'u.user_name',
+        'r.request_length',
+        'tool_name',
+        )
+    .where('t.owner_id', user)
 }
