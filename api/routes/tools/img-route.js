@@ -31,11 +31,13 @@ aws.config.update(awsConfig)
 
 function uploadTos3(req, res) {
     req.s3Key = uuid.v4()
-    let downloadUrl = `https://usemytools.s3-us-west-2.amazonaws.com/${req.s3Key}`
+    let awsUrl = `https://usemytools.s3-us-west-2.amazonaws.com/${req.s3Key}`
     return new Promise((resolve, reject) => {
         return singleFileUpload(req,res,err => {
-            if(err) return reject(err);
-            return resolve(downloadUrl)
+            if(err){
+                return reject(err);
+            } 
+            return resolve(awsUrl)
         })
     })
 }
