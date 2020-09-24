@@ -118,7 +118,7 @@ const deleteImgMiddleware = async (req,res,next) => {
 }
 
 
-router.put('/tools/deleteImg/:toolid',deleteImgMiddleware, async (req, res) => {
+router.put('/tools/deleteImage/:toolid',deleteImgMiddleware, async (req, res) => {
 
     try{
         const id = req.params.toolid
