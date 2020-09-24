@@ -23,7 +23,7 @@ function getTools(){
 } 
 
 function getToolsById(id){
-    return db('tools').where({id}).orderBy('id')
+    return db('tools').where({id}).orderBy('id').first()
 } 
 
 function getUserTools(user){
