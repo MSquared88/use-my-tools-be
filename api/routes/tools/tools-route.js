@@ -68,6 +68,8 @@ router.put('/tools/:id', async (req, res) => {
     }
     catch(err){
         res.status(500).json({ message: 'could not update tool', err })
+        console.log('err', err)
+        
     }
 });
 
