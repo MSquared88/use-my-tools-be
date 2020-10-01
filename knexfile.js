@@ -13,10 +13,10 @@ module.exports = {
       database: 'use-my-tools'
     },
     migrations: {
-      directory: './dataBase/migrations',
+      directory: './database/migrations',
     },
     seeds: {
-      directory: './dataBase/seeds',
+      directory: './database/seeds',
     },
     pool: {
       min: 2, 
@@ -58,7 +58,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: './dataBase/migrations',
+      directory: './database/migrations',
     },
 
   }
