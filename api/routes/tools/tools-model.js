@@ -11,7 +11,8 @@ module.exports = {
     deleteTool,
     updateTool, 
     addRequest,
-    toolRequests
+    toolRequests,
+    truncateRequests
 }
 
 function getTools(){
@@ -71,4 +72,8 @@ function toolRequests(user){
         'tool_name',
         )
     .where('t.owner_id', user)
+}
+
+function truncateRequests(){
+    return db('requests').truncate()
 }
