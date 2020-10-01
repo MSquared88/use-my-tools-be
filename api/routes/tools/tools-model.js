@@ -65,6 +65,7 @@ function toolRequests(user){
     .join('requests AS r', 'r.tool_id', '=', 't.id')
     .join('users AS u', 'u.id', '=', 'r.requestor_id')
     .select(
+        'r.id',
         'u.user_name',
         'r.request_length',
         'tool_name',
