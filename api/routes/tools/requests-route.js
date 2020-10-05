@@ -45,4 +45,17 @@ router.delete('/tools/requests/truncate', async (req, res,) => {
     }
 });
 
+router.delete('/tools/requests/:id', async (req, res,) => {
+
+    const id = req.params.id
+    
+    try{
+        const request = await toolsModel.deleteRequest(id)
+        res.status(200).json(request)
+    }
+    catch(err){
+        res.status(500).json({ message: 'could not delete tool', err })
+    }
+});
+
 module.exports = router

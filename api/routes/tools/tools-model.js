@@ -12,7 +12,8 @@ module.exports = {
     updateTool, 
     addRequest,
     toolRequests,
-    truncateRequests
+    deleteRequest,
+    truncateRequests,
 }
 
 function getTools(){
@@ -76,4 +77,11 @@ function toolRequests(user){
 
 function truncateRequests(){
     return db('requests').truncate()
+}
+
+function deleteRequest(id){
+    const request = await db('requests').where({id}).first()
+
+    await db('tools').where({id}).delete()
+    return request
 }
