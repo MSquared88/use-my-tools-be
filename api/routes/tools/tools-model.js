@@ -79,9 +79,9 @@ function truncateRequests(){
     return db('requests').truncate()
 }
 
-function deleteRequest(id){
-    const request = await db('requests').where({id}).first()
+async function deleteRequest(id){
 
-    await db('tools').where({id}).delete()
+    const request = await db('requests').where({id}).delete()
+    console.log(request)
     return request
 }
