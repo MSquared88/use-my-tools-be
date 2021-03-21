@@ -1,31 +1,30 @@
 //imports
-const express = require('express');
+const express = require("express");
 
 //middleware
-const helmet = require('helmet')
-const cors = require('cors')
-const restricted = require('./Utils/auth/restricted-middleware')
-const logger = require('./Utils/logger')
+const helmet = require("helmet");
+const cors = require("cors");
+const restricted = require("./Utils/auth/restricted-middleware");
+const logger = require("./Utils/logger");
 
 //routes
-const usersRouter = require('./routes/users/users-route')
-const toolsRouter = require('./routes/tools/tools-route')
-
+const usersRouter = require("./routes/users/users-route");
+const toolsRouter = require("./routes/tools/tools-route");
 
 //initiate server
-const server = express()
+const server = express();
 
 // global middleware
-server.use(express.json())
-server.use(helmet())
-server.use(cors())
-server.use(logger)
+server.use(express.json());
+server.use(helmet());
+server.use(cors());
+server.use(logger);
 
-server.use('/api',usersRouter)
+server.use("/api", usersRouter);
 
 //restricted routes
-server.use(restricted)
+server.use(restricted);
 
-server.use('/api', toolsRouter)
+server.use("/api", toolsRouter);
 
-module.exports = server
+module.exports = server;

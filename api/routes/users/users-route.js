@@ -32,7 +32,6 @@ router.post("/user/register", validateUser, (req, res) => {
 
 router.post("/user/login", (req, res) => {
   const { user_name, password } = req.body;
-
   usersModel
     .getBy({ user_name })
     .then((user) => {
