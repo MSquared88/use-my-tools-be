@@ -20,7 +20,7 @@ module.exports = {
     pool: {
       min: 2,
       max: 10,
-    },
+    }
   },
 
   development2: {
@@ -41,7 +41,7 @@ module.exports = {
     pool: {
       min: 2,
       max: 10,
-    },
+    }
   },
 
   staging: {
@@ -57,7 +57,7 @@ module.exports = {
     },
     migrations: {
       directory: "./database/migrations",
-    },
+    }
   },
 
   testing: {
@@ -79,6 +79,6 @@ module.exports = {
     },
     migrations: {
       directory: "./database/migrations",
-    },
+    }
   },
 };
