@@ -5,11 +5,11 @@ module.exports = {
   development: {
     client: "pg",
     connection: {
-      host: "localhost",
+      host: "ec2-3-228-114-251.compute-1.amazonaws.com",
       port: 5432,
-      user: process.env.USER,
-      password: process.env.PASSWORD,
-      database: "use-my-tools",
+      user: process.env.USER2,
+      password: process.env.PASSWORD2,
+      database: "d65qk1h9u79pt2"
     },
     migrations: {
       directory: "./database/migrations",
@@ -19,7 +19,7 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10,
+      max: 10
     }
   },
 
@@ -30,7 +30,7 @@ module.exports = {
       port: 5432,
       user: process.env.USER2,
       password: process.env.PASSWORD2,
-      database: "d65qk1h9u79pt2",
+      database: "d65qk1h9u79pt2"
     },
     migrations: {
       directory: "./database/migrations",
@@ -40,7 +40,7 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10,
+      max: 10
     }
   },
 
