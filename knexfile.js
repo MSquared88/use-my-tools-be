@@ -23,26 +23,6 @@ module.exports = {
     }
   },
 
-  development2: {
-    client: "pg",
-    connection: {
-      host: "ec2-3-228-114-251.compute-1.amazonaws.com",
-      port: 5432,
-      user: process.env.USER2,
-      password: process.env.PASSWORD2,
-      database: "d65qk1h9u79pt2"
-    },
-    migrations: {
-      directory: "./database/migrations",
-    },
-    seeds: {
-      directory: "./database/seeds",
-    },
-    pool: {
-      min: 2,
-      max: 10
-    }
-  },
 
   staging: {
     client: "postgresql",
@@ -72,7 +52,9 @@ module.exports = {
   },
   production: {
     client: "postgresql",
-    connection: process.env.DATABASE_URL,
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized },
     pool: {
       min: 2,
       max: 10,
